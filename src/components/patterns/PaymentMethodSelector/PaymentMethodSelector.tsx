@@ -38,7 +38,7 @@ const StyledListItem = styled.li<StyledListItemProps>(({ theme, selected }) => {
 })
 
 interface PaymentMethodSelectorProps {
-  selected?: 'MoneyTransfer' | 'CreditCard' | 'PayPal'
+  selected?: string
   onClick: (method: PaymentMethodSelectorProps['selected']) => void
 }
 

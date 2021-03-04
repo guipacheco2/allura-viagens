@@ -1,4 +1,5 @@
 export * from './Box'
+export * from './Flex'
 export * from './GridCol'
 export * from './GridContainer'
 export * from './GridRow'

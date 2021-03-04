@@ -17,11 +17,16 @@ const StyledInput = styled(Typography)(({ theme }) => {
     margin: 4px 0;
     outline: 0;
     border-radius: 10px;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.2;
+    }
   `
 }) as React.ComponentType<TypographyPropsGeneric<'input'>>
 
 const StyledTextArea = styled(Typography)(({ theme }) => {
   return css`
+    min-height: 50px;
     width: 100%;
     border: 1px solid ${theme.colors.primary.light};
     color: ${theme.colors.surface.contrastText};
@@ -35,9 +40,7 @@ const StyledTextArea = styled(Typography)(({ theme }) => {
 }) as React.ComponentType<TypographyPropsGeneric<'textarea'>>
 
 interface TextFieldProps {
-  id: string
   label: string
-  placeholder: string
   name: string
   type?: string
   multiline?: boolean
@@ -45,18 +48,24 @@ interface TextFieldProps {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void
   value: string
+  min?: string
+  max?: string
+  disabled?: boolean
 }
 
 export function TextField({
-  id,
   label,
   type = 'text',
-  placeholder,
   name,
   multiline,
   onChange,
   value,
+  min,
+  max,
+  disabled,
 }: TextFieldProps): JSX.Element {
+  const id = `TextField$${name}`
+
   return (
     <StyledTextField>
       <Typography
@@ -71,7 +80,6 @@ export function TextField({
       {multiline ? (
         <StyledTextArea
           as="textarea"
-          placeholder={placeholder}
           name={name}
           onChange={onChange}
           value={value}
@@ -84,12 +92,14 @@ export function TextField({
         <StyledInput
           as="input"
           type={type}
+          min={min}
+          max={max}
           id={id}
-          placeholder={placeholder}
           name={name}
           onChange={onChange}
           value={value}
           variant="bodyText1"
+          disabled={disabled}
           onColor="primary"
         />
       )}
