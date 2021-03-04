@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import {
+  AutocompleteField,
   Box,
   Button,
   ErrorAnimation,
@@ -15,6 +16,7 @@ import {
   Typography,
 } from '../components'
 import { SuccessAnimation } from '../components/animations/SuccessAnimation'
+import { countries } from '../components/patterns/Countries/countries'
 
 enum FormStates {
   IDLE,
@@ -293,21 +295,27 @@ export default function HomePage(): JSX.Element {
 
             <GridRow>
               <GridCol size={{ xs: 12, md: 6 }}>
-                <TextField
-                  onChange={handleChange}
-                  type="text"
-                  name="from"
-                  value={values.from}
-                  label="Local de origem"
+                <AutocompleteField
+                  data={countries}
+                  TextFieldProps={{
+                    onChange: handleChange,
+                    type: 'text',
+                    name: 'from',
+                    value: values.from,
+                    label: 'Local de origem',
+                  }}
                 />
               </GridCol>
               <GridCol size={{ xs: 12, md: 6 }}>
-                <TextField
-                  onChange={handleChange}
-                  type="text"
-                  name="to"
-                  value={values.to}
-                  label="Local de chegada"
+                <AutocompleteField
+                  data={countries}
+                  TextFieldProps={{
+                    onChange: handleChange,
+                    type: 'text',
+                    name: 'to',
+                    value: values.to,
+                    label: 'Local de chegada',
+                  }}
                 />
               </GridCol>
             </GridRow>
@@ -355,12 +363,15 @@ export default function HomePage(): JSX.Element {
 
             <GridRow>
               <GridCol size={{ xs: 12, md: 6 }}>
-                <TextField
-                  onChange={handleChange}
-                  type="text"
-                  name="residenceCountry"
-                  value={values.residenceCountry}
-                  label="País de residência"
+                <AutocompleteField
+                  data={countries}
+                  TextFieldProps={{
+                    onChange: handleChange,
+                    type: 'text',
+                    name: 'residenceCountry',
+                    value: values.residenceCountry,
+                    label: 'País de residência',
+                  }}
                 />
               </GridCol>
               <GridCol size={{ xs: 12, md: 6 }}>

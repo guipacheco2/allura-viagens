@@ -39,7 +39,7 @@ const StyledTextArea = styled(Typography)(({ theme }) => {
   `
 }) as React.ComponentType<TypographyPropsGeneric<'textarea'>>
 
-interface TextFieldProps {
+export interface TextFieldProps {
   label: string
   name: string
   type?: string
@@ -52,6 +52,7 @@ interface TextFieldProps {
   max?: string
   disabled?: boolean
   innerRef?: any
+  list?: string
 }
 
 export function TextField({
@@ -65,6 +66,7 @@ export function TextField({
   max,
   disabled,
   innerRef,
+  list,
 }: TextFieldProps): JSX.Element {
   const id = `TextField$${name}`
 
@@ -94,6 +96,7 @@ export function TextField({
         <StyledInput
           as="input"
           type={type}
+          list={list}
           min={min}
           max={max}
           id={id}
