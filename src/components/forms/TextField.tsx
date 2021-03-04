@@ -51,6 +51,7 @@ interface TextFieldProps {
   min?: string
   max?: string
   disabled?: boolean
+  innerRef?: any
 }
 
 export function TextField({
@@ -63,6 +64,7 @@ export function TextField({
   min,
   max,
   disabled,
+  innerRef,
 }: TextFieldProps): JSX.Element {
   const id = `TextField$${name}`
 
@@ -101,6 +103,7 @@ export function TextField({
           variant="bodyText1"
           disabled={disabled}
           onColor="primary"
+          ref={innerRef}
         />
       )}
     </StyledTextField>

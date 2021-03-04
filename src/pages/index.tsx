@@ -7,6 +7,7 @@ import {
   GridCol,
   GridContainer,
   GridRow,
+  MaskedField,
   Page,
   PaymentMethodSelector,
   Surface,
@@ -374,12 +375,14 @@ export default function HomePage(): JSX.Element {
               </GridCol>
             </GridRow>
 
-            <TextField
-              type="text"
-              onChange={handleChange}
+            <MaskedField
               name="document"
+              onAccept={(value: string) => setValue('document', value)}
               value={values.document}
               label="CPF"
+              type="text"
+              mask="000.000.000-00"
+              unmask={false}
             />
 
             <TextField
@@ -390,12 +393,14 @@ export default function HomePage(): JSX.Element {
               label="Email"
             />
 
-            <TextField
-              onChange={handleChange}
-              type="text"
+            <MaskedField
               name="phone"
+              onAccept={(value: string) => setValue('phone', value)}
               value={values.phone}
               label="Telefone"
+              type="text"
+              mask="(00) 00000-0000"
+              unmask={false}
             />
 
             <Button
